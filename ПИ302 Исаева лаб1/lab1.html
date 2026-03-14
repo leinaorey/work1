@@ -1,0 +1,21 @@
+<html>
+<head>
+    <script>
+    var fruits = ["apple", "orange", "banana", "grape", "strawberry"];
+    var currentIndex = 0;
+    
+    function changeImage() {
+        currentIndex = currentIndex + 1;
+        if (currentIndex >= fruits.length) {
+            currentIndex = 0;
+        }
+        
+        var imgname = fruits[currentIndex] + ".jpg";
+        document.getElementById("img").src = imgname;
+    }
+    </script>
+</head>
+<body>
+    <img id="img" onclick="changeImage()" src="apple.jpg" width="256"/>
+</body>
+</html>
