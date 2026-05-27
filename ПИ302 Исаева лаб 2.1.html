@@ -1,0 +1,19 @@
+<html>
+    
+<head>
+    <script>
+    function changeBrightness(range) {
+        var brightness = range.value;
+        var color = "rgb(" + brightness + ", " + brightness + ", " + brightness + ")";
+        document.getElementById("mycolor").style.backgroundColor = color;
+    }
+    </script>
+</head>
+
+<body>
+    <input type="range" min="0" max="255" value="255" oninput="changeBrightness(this)"/>
+    <input type="text" id="mycolor" value="Изменяемая яркость"/>
+</body>
+
+</html>
+

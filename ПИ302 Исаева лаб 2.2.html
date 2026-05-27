@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script>
+
+        function showDescription(category) {
+            var descField = document.getElementById("description");
+            switch (category) {
+            case "A": descField.innerHTML = "Пицца, паста, лазанья, ризотто, тирамису"; break;
+            case "B": descField.innerHTML = "Хачапури, хинкали, сациви, лобио, чахохбили"; break;
+            case "C": descField.innerHTML = "Утка по-пекински, лапша, димсамы, жареный рис"; break;
+            case "D": descField.innerHTML = "Суши, роллы, рамен, мисо-суп, темпура"; break;
+            case "E": descField.innerHTML = "Плов, манты, лагман, самса, шурпа"; break;
+            }
+        }
+
+        </script>
+    </head>
+
+    <body>
+        <b>Выберите кухню:</b>
+        <br><br>
+        <input id="A" type="radio" name="category" checked="true" onChange="showDescription('A')"/>
+        <label for="A">Итальянская кухня</label>
+        <br>
+        <input type="radio" name="category" onChange="showDescription('B')"/>
+        <label for="B">Грузинская кухня</label>
+        <br>
+        <input type="radio" name="category" onChange="showDescription('C')"/>
+        <label for="C">Китайская кухня</label>
+        <br>
+        <input type="radio" name="category" onChange="showDescription('D')"/>
+        <label for="D">Японская кухня</label>
+        <br>
+        <input type="radio" name="category" onChange="showDescription('E')"/>
+        <label for="E">Узбекская кухня</label>
+        <br>
+        <div><b>Блюда:</b></div>
+        <div id="description">Пицца, паста, лазанья, ризотто, тирамису</div>
+    </body>
+</html>
