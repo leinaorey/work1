@@ -1,0 +1,51 @@
+<html>
+<head>
+    <script>
+    var images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg"];
+    var current = 0;
+    var timer = null;
+    
+    function update() {
+        document.getElementById("img").src = images[current];
+        document.getElementById("counter").innerHTML = (current+1) + "/4";
+    }
+    
+    function prev() {
+        if (timer) return;
+        current = (current - 1 + images.length) % images.length;
+        update();
+    }
+    
+    function next() {
+        if (timer) return;
+        current = (current + 1) % images.length;
+        update();
+    }
+    
+    function startAuto() {
+        if (timer) return;
+        timer = setInterval(function() {
+            current = (current + 1) % images.length;
+            update();
+        }, 1000);
+    }
+    
+    function stopAuto() {
+        clearInterval(timer);
+        timer = null;
+    }
+    </script>
+</head>
+
+<body>
+    <img id="img" src="1.jpg" width="300"/>
+    <br>
+    <div id="counter">1/4</div>
+    <br>
+    <input type="button" value="◀" onclick="prev()"/>
+    <input type="button" value="▶" onclick="next()"/>
+    <br><br>
+    <input type="button" value="Авто" onclick="startAuto()"/>
+    <input type="button" value="Стоп" onclick="stopAuto()"/>
+</body>
+</html>
