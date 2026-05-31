@@ -1,0 +1,35 @@
+<html>
+<head>
+    <script>
+    var x = 150;
+    var y = 120;
+    var size = 20;
+    var color = "black";
+    var sizes = { s: 10, m: 20, b: 30 };
+
+    function draw() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, size, size);
+    }
+
+    function onKey(e) {
+        var key = e.key.toLowerCase();
+        if (key === "s") size = sizes.s;
+        if (key === "m") size = sizes.m;
+        if (key === "b") size = sizes.b;
+        draw();
+    }
+
+    window.onload = function() {
+        draw();
+        document.onkeydown = onKey;
+    };
+    </script>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="300" style="border:1px solid #333"></canvas>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+<head>
+    <script>
+    var x = 150;
+    var y = 120;
+    var size = 30;
+    var color = "red";
+    var colors = ["red", "blue", "green"];
+
+    function draw() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, size, size);
+    }
+
+    function onKey(e) {
+        if (e.key === "1") color = colors[0];
+        if (e.key === "2") color = colors[1];
+        if (e.key === "3") color = colors[2];
+        draw();
+    }
+
+    window.onload = function() {
+        draw();
+        document.onkeydown = onKey;
+    };
+    </script>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="300" style="border:1px solid #333"></canvas>
+</body>
+</html>
