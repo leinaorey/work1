@@ -1,0 +1,28 @@
+<html>
+<head>
+    <script>
+    function drawCircles() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var cx = canvas.width / 2;
+        var cy = canvas.height / 2;
+        var maxR = 140;
+        var step = 4;
+        var colors = ["red", "lime", "blue", "magenta", "cyan", "yellow", "orange", "purple"];
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (var r = step; r <= maxR; r += step) {
+            ctx.beginPath();
+            ctx.arc(cx, cy, r, 0, 2 * Math.PI);
+            ctx.strokeStyle = colors[Math.floor(r / step) % colors.length];
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+    }
+    </script>
+</head>
+<body onload="drawCircles()">
+    <canvas id="canvas" width="400" height="400" style="border:1px solid #333"></canvas>
+</body>
+</html>

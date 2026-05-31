@@ -1,0 +1,38 @@
+<html>
+<head>
+    <script>
+    function drawFan() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var cx = canvas.width / 2;
+        var cy = canvas.height / 2;
+        var R = 140;
+        var n = 36;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        var x0 = cx + R * Math.cos(Math.PI / 2);
+        var y0 = cy + R * Math.sin(Math.PI / 2);
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, R, 0, 2 * Math.PI);
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        ctx.beginPath();
+        for (var i = 0; i <= n; i++) {
+            var alpha = 2 * Math.PI * i / n;
+            var x1 = cx + R * Math.cos(alpha);
+            var y1 = cy + R * Math.sin(alpha);
+            ctx.moveTo(x0, y0);
+            ctx.lineTo(x1, y1);
+        }
+        ctx.stroke();
+    }
+    </script>
+</head>
+<body onload="drawFan()">
+    <canvas id="canvas" width="400" height="400" style="border:1px solid #333"></canvas>
+</body>
+</html>
