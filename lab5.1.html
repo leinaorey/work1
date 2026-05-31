@@ -1,0 +1,32 @@
+<html>
+<head>
+    <script>
+    function drawRect() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var x = parseInt(document.getElementById("rectX").value, 10);
+        var y = parseInt(document.getElementById("rectY").value, 10);
+        var w = parseInt(document.getElementById("rectW").value, 10);
+        var h = parseInt(document.getElementById("rectH").value, 10);
+        var color = document.getElementById("rectColor").value;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, w, h);
+    }
+    </script>
+</head>
+<body>
+    <label>X:</label><input type="number" id="rectX" value="50" min="0" max="350"/>
+    <label>Y:</label><input type="number" id="rectY" value="50" min="0" max="250"/>
+    <br>
+    <label>Ширина:</label><input type="number" id="rectW" value="120" min="1" max="400"/>
+    <label>Высота:</label><input type="number" id="rectH" value="80" min="1" max="300"/>
+    <br>
+    <label>Цвет:</label><input type="color" id="rectColor" value="#4a90d9"/>
+    <br><br>
+    <input type="button" value="Нарисовать" onclick="drawRect()"/>
+    <br><br>
+    <canvas id="canvas" width="400" height="300" style="border:1px solid #333"></canvas>
+</body>
+</html>
