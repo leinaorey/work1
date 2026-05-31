@@ -1,0 +1,33 @@
+<html>
+<head>
+    <script>
+    var color = "red";
+    var colors = ["red", "blue", "green"];
+    var size = 12;
+
+    function onKey(e) {
+        if (e.key === "1") color = colors[0];
+        if (e.key === "2") color = colors[1];
+        if (e.key === "3") color = colors[2];
+    }
+
+    function onMouseDown(e) {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var rect = canvas.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, size, size);
+    }
+
+    window.onload = function() {
+        document.onkeydown = onKey;
+        document.getElementById("canvas").onmousedown = onMouseDown;
+    };
+    </script>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="300" style="border:1px solid #333"></canvas>
+</body>
+</html>
