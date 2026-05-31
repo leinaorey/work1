@@ -1,0 +1,69 @@
+<html>
+<head>
+    <script>
+    function draw() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var w = canvas.width;
+        var h = canvas.height;
+        var n = parseInt(document.getElementById("nodes").value, 10);
+        var lineWidth = parseInt(document.getElementById("lineWidth").value, 10);
+        var lineColor = document.getElementById("lineColor").value;
+        var bgColor = document.getElementById("bgColor").value;
+        var useFill = document.getElementById("useFill").checked;
+
+        if (n < 2) n = 2;
+
+        ctx.fillStyle = useFill ? bgColor : "white";
+        ctx.fillRect(0, 0, w, h);
+
+        ctx.strokeStyle = lineColor;
+        ctx.lineWidth = lineWidth;
+        ctx.beginPath();
+        for (var i = 0; i <= n; i++) {
+            var x = i * w / n;
+            var y = i * h / n;
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, h);
+            ctx.moveTo(0, y);
+            ctx.lineTo(w, y);
+        }
+        ctx.stroke();
+    }
+
+    function changeNodes(delta) {
+        var input = document.getElementById("nodes");
+        var n = parseInt(input.value, 10) + delta;
+        if (n < 2) n = 2;
+        if (n > 50) n = 50;
+        input.value = n;
+        draw();
+    }
+
+    function onKey(e) {
+        if (e.key === "+" || e.key === "=") changeNodes(1);
+        if (e.key === "-") changeNodes(-1);
+    }
+
+    window.onload = function() {
+        document.onkeydown = onKey;
+        draw();
+    };
+    </script>
+</head>
+<body>
+    <label>Узлов сетки:</label>
+    <input type="number" id="nodes" value="10" min="2" max="50" onchange="draw()"/>
+    <label>Толщина:</label>
+    <input type="number" id="lineWidth" value="1" min="1" max="10" onchange="draw()"/>
+    <br>
+    <label>Цвет линии:</label>
+    <input type="color" id="lineColor" value="#000000" onchange="draw()"/>
+    <label>Цвет фона:</label>
+    <input type="color" id="bgColor" value="#ffffcc" onchange="draw()"/>
+    <label>Заливка:</label>
+    <input type="checkbox" id="useFill" checked onchange="draw()"/>
+    <br><br>
+    <canvas id="canvas" width="400" height="400" style="border:1px solid #333"></canvas>
+</body>
+</html>
